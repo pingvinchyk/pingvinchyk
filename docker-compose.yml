@@ -1,0 +1,22 @@
+services:
+  backend:
+    container_name: backend
+    image: golang:1.23.0-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: tail -f /dev/null
+    env_file:
+      - .env
+    ports:
+      - "8080:80"
+
+  frontend:
+    container_name: frontend
+    image: node:20-alpine
+    working_dir: /app
+    command: "sleep infinity"
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "80:5173"
