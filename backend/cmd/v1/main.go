@@ -33,12 +33,7 @@ func main() {
 	f, _ := os.Create("gin.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 
-	r := gin.Default() // if env := os.Getenv("ENVIRONMENT"); env == "development" {
-	// 	docs.SwaggerInfo.Host = fmt.Sprintf("%s%s", os.Getenv("HOSTS"), os.Getenv("PORT"))
-	// } else {
-	// 	docs.SwaggerInfo.Host = os.Getenv("HOSTS")
-	// }
-	// log.Printf("Swagger host set to: %s", docs.SwaggerInfo.Host)
+	r := gin.Default()
 	r.Use(gin.Logger())
 	r.Use(cors.New(cors.Config{
 		AllowAllOrigins:  true,

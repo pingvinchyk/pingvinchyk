@@ -39,9 +39,14 @@ cd pingvinchyk
 Create a `.env` file in the root directory. Here's a basic example:
 
 ```env
-ENVIRONMENT=development
-HOSTS=localhost
-TLS_CERTIFICATES_DIR=.certs
+NVIRONMENT="development"
+POSTGRES_USER="user"
+POSTGRES_PASSWORD="pass"
+POSTGRES_DB="pingvinchyk"
+POSTGRES_DSN="postgresql://pg_user:pass@postgres:5433/pingvinchyk?sslmod"
+TLS_CERTIFICATES_DIR=""
+PORT=":8080"
+HOSTS="localhost"
 ```
 
 ### 3. **Start the Project Locally**
@@ -51,7 +56,8 @@ Make sure you have **Docker** and **Make** installed, then run:
 ```bash
 make env-up      # Start backend and frontend containers
 make build       # Build the Go backend binary
-make app-start   # Run backend and frontend processes
+make backend-start   # Run backend processes
+make frontend-start   # Run frontend processes
 ```
 
 After a few seconds:
@@ -82,21 +88,14 @@ Expected output:
 To stop the backend and frontend processes gracefully:
 
 ```bash
-make app-stop
+make backend-stop
+make frontend-stop
 ```
 
 To stop and remove containers completely:
 
 ```bash
 make env-down
-```
-
----
-
-## ♻️ Restart Everything
-
-```bash
-make restart
 ```
 
 ---
