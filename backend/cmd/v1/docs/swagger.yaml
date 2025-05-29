@@ -1,0 +1,33 @@
+basePath: /api/v1
+definitions:
+  models.HelloResponse:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Pingvinchyk API is a RESTful API for the Pingvinchyk application.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Pingvinchyk API
+  version: "1.0"
+paths:
+  /hello:
+    get:
+      consumes:
+      - application/json
+      description: Simple hello endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.HelloResponse'
+      summary: Returns a Hello message
+      tags:
+      - hello
+swagger: "2.0"

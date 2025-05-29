@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type SetStateAction } from 'react'
 import './App.css'
+import { HelloService } from './api'
+import type { models_HelloResponse } from './api/models/models_HelloResponse'
 
 function App() {
   const environment = import.meta.env.ENVIRONMENT;
   const endpoint =
   environment === "production"
-    ? "https://domain.com:4431"
-    : "http://localhost:8080";
+    ? "https://domain.com:4431/api"
+    : "http://localhost:8080/api";
 
   const [message, setMessage] = useState<string>("Loading...");
 
+
   useEffect(() => {
-    fetch(endpoint + "/hello")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message))
-      .catch((err) => console.error(err));
+    HelloService.getHello()
+      .then((res: models_HelloResponse) => setMessage(res.message || "No message received"))
+      .catch((err: any) => console.error(err));
   }, []);
 
   return (

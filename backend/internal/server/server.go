@@ -1,7 +1,6 @@
 package server
 
 import (
-	"cmd/backend/internal/env"
 	"fmt"
 	"log"
 	"strings"
@@ -9,6 +8,8 @@ import (
 
 	"crypto/tls"
 	"net/http"
+
+	"pingvinchyk/backend/internal/env"
 
 	"golang.org/x/crypto/acme/autocert"
 	"golang.org/x/sync/errgroup"
@@ -61,7 +62,7 @@ func runProduction(handler http.Handler) {
 func runDevelopment(handler http.Handler) {
 	fmt.Println("Started dev")
 	server := &http.Server{
-		Addr:         ":http",
+		Addr:         env.Must("PORT"),
 		Handler:      handler,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 10 * time.Second,

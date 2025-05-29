@@ -8,7 +8,7 @@ env-down:
 restart: env-down env-up build 
 
 build:
-	docker exec backend go build -o /bin/pg-app-server ./backend/cmd/main.go
+	docker exec backend go build -o /bin/pg-app-server ./backend/cmd/v1/main.go
 
 backend-start:
 	docker exec backend pg-app-server
@@ -26,3 +26,14 @@ frontend-stop:
 	docker exec frontend pkill node || echo "frontend process already stopped"
 
 app-stop: backend-stop frontend-stop
+
+swagger-gen:
+	swag init -g backend/cmd/v1/main.go -o backend/cmd/v1/docs
+
+cli-create:
+	npx openapi-typescript-codegen \
+  	--input backend/cmd/v1/docs/swagger.json \
+  	--output frontend/src/api \
+  	--client fetch
+
+cli-update: swagger-gen cli-create
