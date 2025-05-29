@@ -1,15 +1,9 @@
-import { useEffect, useState, type SetStateAction } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { HelloService } from './api'
 import type { models_HelloResponse } from './api/models/models_HelloResponse'
 
 function App() {
-  const environment = import.meta.env.ENVIRONMENT;
-  const endpoint =
-  environment === "production"
-    ? "https://domain.com:4431/api"
-    : "http://localhost:8080/api";
-
   const [message, setMessage] = useState<string>("Loading...");
 
 
