@@ -37,3 +37,8 @@ cli-create:
   	--client fetch
 
 cli-update: swagger-gen cli-create
+
+install-swag:
+	go install github.com/swaggo/swag/cmd/swag@latest
+	export PATH=$$PATH:$(go env GOPATH)/bin
+	source ~/.bashrc

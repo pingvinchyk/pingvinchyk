@@ -1,0 +1,154 @@
+/* From Uiverse.io by Smit-Prajapati */
+.container {
+  max-width: 350px;
+  background: linear-gradient(to right bottom, #383a46 0%, #464d6823 100%);
+
+  border-radius: 40px;
+  padding: 25px 35px;
+  border: 5px solid #464d687c;
+  box-shadow: rgba(56, 92, 109, 0.878) 0px 30px 30px -20px;
+  margin: 20px;
+}
+
+.heading {
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+  color: rgb(16, 137, 211);
+}
+
+.form {
+  margin-top: 20px;
+}
+
+.form .input {
+  width: 100%;
+  height: 40px;
+  background: #41539b44;
+  border: none;
+  border-radius: 20px;
+  margin-top: 15px;
+  padding: 0 20px; /* 👈 отступ текста слева и справа */
+  box-shadow: #0b3447 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+  box-sizing: border-box; /* важно, чтобы padding не увеличивал размер */
+}
+.form .input::-moz-placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.form .input::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.form .input:focus {
+  outline: none;
+  border-inline: 2px solid #12b1d1;
+}
+
+.form .forgot-password {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.form .forgot-password a {
+  font-size: 11px;
+  color: #0099ff;
+  text-decoration: none;
+}
+
+.form .login-button {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(
+    45deg,
+    rgba(62, 116, 150, 0.767) 0%,
+    rgba(7, 74, 88, 0.726) 100%
+  );
+  color: white;
+  padding-block: 15px;
+  margin: 10px auto;
+  border-radius: 20px;
+  box-shadow: rgba(34, 75, 94, 0.878) 5px 15px 20px -10px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.form .login-button:hover {
+  transform: scale(1.03);
+  box-shadow: rgba(39, 78, 95, 0.878) 10px 20px 20px -10px;
+}
+
+.form .login-button:active {
+  transform: scale(0.95);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+}
+
+.social-account-container {
+  margin-top: 20px;
+}
+
+.social-account-container .title {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: rgb(170, 170, 170);
+}
+
+.social-account-container .social-accounts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.social-account-container .social-accounts .social-button {
+  background: linear-gradient(to right bottom, #3f4f9141 0%, #24336d41 100%);
+  border: 5px solid #3f4f9141;
+  padding: 5px;
+  border-radius: 50%;
+  width: 40px;
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 7px 7px 10px -8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-account-container .social-accounts .social-button .svg {
+  fill: white;
+  margin: auto;
+}
+
+.social-account-container .social-accounts .social-button:hover {
+  transform: scale(1.2);
+}
+
+.social-account-container .social-accounts .social-button:active {
+  transform: scale(0.9);
+}
+
+.agreement {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.agreement a {
+  text-decoration: none;
+  color: #0099ff;
+  font-size: 9px;
+}
+.signup-link {
+  text-align: center;
+  cursor: pointer;
+  color: #223ca1aa;
+  transition: color 0.2s ease;
+}
+
+.signup-link:hover {
+  color: #1737b4;
+}

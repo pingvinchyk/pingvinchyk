@@ -9,7 +9,7 @@ import (
 
 type RequestController struct{}
 
-func NewWebController() *RequestController {
+func NewRequestController() *RequestController {
 	return &RequestController{}
 }
 
@@ -27,3 +27,4 @@ func (c *RequestController) HelloWorld(ctx *gin.Context) {
 		Message: "Hello world from go",
 	})
 }
+

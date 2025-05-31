@@ -28,7 +28,7 @@ import (
 // @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
 
 func main() {
-	var requestController = controllers.NewWebController()
+	var requestController = controllers.NewRequestController()
 
 	f, _ := os.Create("gin.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)

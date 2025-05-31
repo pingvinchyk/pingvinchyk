@@ -5,7 +5,6 @@ definitions:
       message:
         type: string
     type: object
-host: localhost:8080
 info:
   contact: {}
   description: Pingvinchyk API is a RESTful API for the Pingvinchyk application.
