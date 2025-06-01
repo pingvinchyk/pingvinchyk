@@ -1,0 +1,76 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    coderabbit:
+    name: 🤖 AI PR Review (CodeRabbit)
+    runs-on: ubuntu-latest
+    steps:
+      - name: AI-based PR Reviewer & Summarizer with Chat Capabilities
+        uses: coderabbitai/ai-pr-reviewer@1.16.2
+
+
+  backend:
+    name: 🔧 Backend (Go)
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.23.0'
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Build
+        run: go build ./...
+
+      - name: Run tests
+        run: go test -v ./...
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.55.2
+          working-directory: backend
+          args: --timeout=5m
+
+
+  frontend:
+    name: 💻 Frontend (React)
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.01'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Tests
+        run: npm test -- --watchAll=false
+
+      - name: Build app
+        run: npm run build
