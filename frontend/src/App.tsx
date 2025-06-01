@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { HelloTestService } from "./api";
 import type { models_HelloResponse } from "./api/models/models_HelloResponse";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
@@ -13,6 +12,7 @@ import tsImg from "./assets/tsImg.png";
 import gsapImg from "./assets/gsapImg.png";
 import gitHubLogo from "./assets/github.svg";
 import Test from "./pages/Test.tsx";
+import { HelloService } from "./api/index.ts";
 
 const useWidth = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -30,7 +30,7 @@ function App() {
   const [message, setMessage] = useState<string>("Loading...");
   const width = useWidth();
   useEffect(() => {
-    HelloTestService.getHelloTest()
+    HelloService.getHello()
       .then((res: models_HelloResponse) =>
         setMessage(res.message || "No message received")
       )

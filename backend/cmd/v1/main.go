@@ -23,6 +23,7 @@ import (
 // @version         1.0
 // @description     Pingvinchyk API is a RESTful API for the Pingvinchyk application.
 // @BasePath /api/v1
+// @host     localhost:8080
 
 // @license.name  Apache 2.0
 // @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
