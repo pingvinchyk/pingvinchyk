@@ -22,6 +22,9 @@ import PartnerFind from "./pages/PartnerFind.tsx";
 import Community from "./pages/Community.tsx";
 import Profile from "./pages/Profile.tsx";
 import mailImg from "./assets/mail.svg";
+import {OpenAPI} from "./api/core/OpenAPI";
+
+OpenAPI.BASE = import.meta.env.VITE_API_ENDPOINT || "http://localhost:8080/api/v1";
 
 const useWidth = () => {
   const [width, setWidth] = useState(window.innerWidth);

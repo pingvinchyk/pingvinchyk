@@ -1,3 +1,5 @@
+include .env
+export $(shell sed 's/=.*//' .env)
 
 env-up:
 	docker compose -f docker-compose.yml --env-file .env up -d
@@ -15,7 +17,6 @@ backend-start:
 
 frontend-start:
 	docker exec frontend npm run dev
-
 
 env-restart: env-down env-up
 
@@ -41,4 +42,19 @@ cli-update: swagger-gen cli-create
 install-swag:
 	go install github.com/swaggo/swag/cmd/swag@latest
 	export PATH=$$PATH:$(go env GOPATH)/bin
-	source ~/.bashrc
+
+migrate-pgsql-goose-install:
+	docker exec backend go install github.com/pressly/goose/v3/cmd/goose@latest
+
+migrate-pgsql-create:
+	$(eval NAME ?= todo)
+	goose -dir backend/internal/storage/migrations postgres $(POSTGRES_DSN) create init sql
+
+#	Migrating postgresql db with goose
+migrate-pgsql-up: migrate-pgsql-goose-install
+	docker exec -e GOOSE_DRIVER=postgres \
+                -e GOOSE_DBSTRING=$(POSTGRES_DSN) \
+                backend goose -dir backend/internal/storage/migrations -table schema_migrations up
+
+migrate-pgsql-down:
+	docker exec backend goose -dir ./backend/internal/storage/migrations -table schema_migrations postgres down

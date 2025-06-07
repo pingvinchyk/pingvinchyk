@@ -1,4 +1,4 @@
-package controllers
+package handlers
 
 import (
 	"net/http"
@@ -7,10 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type RequestController struct{}
+type RequestHandler struct{}
 
-func NewRequestController() *RequestController {
-	return &RequestController{}
+func NewRequestHandler() *RequestHandler {
+	return &RequestHandler{}
 }
 
 // HelloWorld godoc
@@ -22,9 +22,8 @@ func NewRequestController() *RequestController {
 //	@Produce      json
 //	@Success      200 {object} models.HelloResponse
 //	@Router       /hello [get]
-func (c *RequestController) HelloWorld(ctx *gin.Context) {
+func (c *RequestHandler) HelloWorld(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, models.HelloResponse{
 		Message: "Hello world from go",
 	})
 }
-

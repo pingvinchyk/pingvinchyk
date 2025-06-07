@@ -1,0 +1,12 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "./backend/internal/storage/queries/"
+    schema: "./backend/internal/storage/migrations/"
+
+    gen:
+      go:
+        package: "dbs"
+        sql_package: "database/sql"
+        out: "./backend/internal/storage/dbs/"
+        emit_prepared_queries: true

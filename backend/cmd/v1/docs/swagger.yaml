@@ -1,11 +1,20 @@
 basePath: /api/v1
 definitions:
+  models.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
   models.HelloResponse:
     properties:
       message:
         type: string
     type: object
-host: localhost:8080
+  models.SuccessResponse:
+    properties:
+      message:
+        type: string
+    type: object
 info:
   contact: {}
   description: Pingvinchyk API is a RESTful API for the Pingvinchyk application.
@@ -15,6 +24,52 @@ info:
   title: Pingvinchyk API
   version: "1.0"
 paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Login a user with email/username and password
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Login a user
+      tags:
+      - auth
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with email, username, and password
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Register a new user
+      tags:
+      - auth
   /hello:
     get:
       consumes:
