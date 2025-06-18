@@ -22,7 +22,9 @@ import PartnerFind from "./pages/PartnerFind.tsx";
 import Community from "./pages/Community.tsx";
 import Profile from "./pages/Profile.tsx";
 import mailImg from "./assets/mail.svg";
+import { OpenAPI } from "./api/core/OpenAPI";
 
+OpenAPI.BASE = "http://localhost:8080/api/v1";
 const useWidth = () => {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -74,7 +76,7 @@ function App() {
           width: "100%",
           height: 80,
           borderRadius: "0px 0px 16px 16px",
-          backgroundColor: "#083536",
+          backgroundColor: width < 425 ? "red" : "#083536",
           display: "flex",
           alignItems: "center",
         }}
